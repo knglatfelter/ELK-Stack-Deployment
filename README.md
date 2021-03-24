@@ -4,7 +4,8 @@
 
 The files in this repository were used to configure the network depicted below.
 
-[Images/Elk_Stack_Topology.jpeg]
+<img width="772" alt="Screen Shot 2021-03-24 at 6 03 33 AM" src="https://user-images.githubusercontent.com/73920494/112308006-401b8e80-8c67-11eb-9123-b8cdd3bf8572.png">
+
 
 These files have been tested and used to generate a live ELK deployment on Azure. They can be used to recreate the entire deployment pictured above. Files must be deployed in listed order to achieve desired results. 
 
