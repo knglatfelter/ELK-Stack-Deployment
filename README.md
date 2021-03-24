@@ -7,9 +7,11 @@ The files in this repository were used to configure the network depicted below.
 <img width="772" alt="Screen Shot 2021-03-24 at 6 03 33 AM" src="https://user-images.githubusercontent.com/73920494/112308006-401b8e80-8c67-11eb-9123-b8cdd3bf8572.png">
 
 
-These files have been tested and used to generate a live ELK deployment on Azure. They can be used to recreate the entire deployment pictured above. Files must be deployed in listed order to achieve desired results. 
+These files have been tested and used to generate a live ELK deployment on Azure. They can be used to recreate the entire deployment pictured above. Alternatively, select portions of the playbook may be used to install only certain pieces of it, such as Filebeat. 
 
   - ELK-install.yml
+  - filebeat-playbook.yml
+  - metricbeat-playbook.yml
 
 This document contains the following details:
 - Description of the Topology
@@ -74,7 +76,7 @@ The playbook implements the following tasks:
 
 The following screenshot displays the result of running `docker ps` after successfully configuring the ELK instance.
 
-[Images/docker_ps.png]
+<img width="572" alt="docker_ps" src="https://user-images.githubusercontent.com/73920494/112308385-b0c2ab00-8c67-11eb-9881-4ef46824eb32.png">
 
 ### Target Machines & Beats
 This ELK server is configured to monitor the following machines:
@@ -83,8 +85,8 @@ This ELK server is configured to monitor the following machines:
 - 10.0.0.8
 
 We have installed the following Beats on these machines:
-- Filebeat
-- Metricbeat
+- Filebeat (filebeat-7.4.0-amd64.deb)
+- Metricbeat (metricbeat-7.4.0-amd64.deb)
 
 These Beats allow us to collect the following information from each machine:
 - Filebeat collects log files and log events, which can be used to view access logs from users, or error logs from applications on the server.
@@ -96,4 +98,10 @@ In order to use the playbook, you will need to have an Ansible control node alre
 SSH into the control node and follow the steps below:
 - Copy the ELK-install.yml file to /etc/ansible/roles.
 - Update the hosts file in Ansible to include the group [elk] with the internal IP of your ELK-VM: [internal_ip] ansible_python_interpreter=/usr/bin/python3
-- Run the playbook, and navigate to http://[your.ELK-VM.Public.IP]:5601/app/kibana to check that the installation worked as expected.
+- Run the playbook <ansible-playbook ELK-install.yml>, and navigate to http://[your.ELK-VM.Public.IP]:5601/app/kibana to check that the installation worked as expected.
+
+To install Filebeat and Metricbeat, follow the steps below:
+- Copy filebeat-configuration.yml and metricbeat-configuration.yml to /etc/ansible/files.
+- Update the configuration files to include the ELK-VMs internal IP. 
+- Copy the filebeat-playbook.yml and the metricbeat-playbook.yml to /etc/ansible/roles.
+
