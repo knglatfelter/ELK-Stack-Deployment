@@ -104,4 +104,5 @@ To install Filebeat and Metricbeat, follow the steps below:
 - Copy filebeat-configuration.yml and metricbeat-configuration.yml to /etc/ansible/files.
 - Update the configuration files to include the ELK-VMs internal IP. 
 - Copy the filebeat-playbook.yml and the metricbeat-playbook.yml to /etc/ansible/roles.
-
+- Run the playbooks, one at a time <ansible playbook name_of_playbook.yml>
+- After installation open up http://[your.ELK-VM.IP]:5601/app/kibana and click on Log Data, Run Check to make sure data is being pulled. 
